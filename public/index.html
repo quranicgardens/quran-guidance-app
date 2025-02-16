@@ -41,5 +41,34 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      setTimeout(() => {
+       
+     
+        // Your JS code here
+        const increaseButton = document.getElementById("increase-font");
+        const decreaseButton = document.getElementById("decrease-font");
+
+        let currentFontSize = 1.2; // Default font size in rem
+
+        const updateFontSize = (amount) => {
+          const ayahTextElements = document.querySelectorAll(".ayah-text");
+          currentFontSize += amount;
+
+          // Prevent the font size from going below 1rem
+          if (currentFontSize < 1) {
+            currentFontSize = 1;
+          }
+
+          ayahTextElements.forEach((element) => {
+            element.style.fontSize = `${currentFontSize}rem`;
+          });
+        };
+
+        // Attach event listeners to buttons
+        increaseButton.addEventListener("click", () => updateFontSize(0.1));
+        decreaseButton.addEventListener("click", () => updateFontSize(-0.1));
+    }, 7*1000);
+    </script>
   </body>
 </html>
