@@ -11,6 +11,9 @@ import AddContact from './Components/AddContact';
 import LoginPage from './Components/LoginPage';
 import SurahList from './Components/ar/SurahList';
 import SurahViewer from './Components/ar/SurahViewer';
+import SurahListEn from './Components/en/SurahList';
+import SurahViewerEn from './Components/en/SurahViewer';
+import QuranViewerEn from './Components/en/QuranViewer';
 function App() {
   
   // const UserContext = createContext();
@@ -48,7 +51,11 @@ function App() {
         <>
         {contacts && <Route path="" element={ <AppContactsList data={contacts}/> }/>}  
         <Route path="/surahs" element={<SurahList />} />
+        <Route path="/en/surahs" element={<SurahListEn />} />
+        
         <Route path="surahs/:surahNumber" element={<SurahViewer/>} />
+        <Route path="en/surahs/:surahNumber" element={<SurahViewerEn/>} />
+        <Route path="en/quranviewer/pdf" element={<QuranViewerEn/>} />
         <Route path="/add-contact" element={<AddContact />} />
         <Route path="/login" element={<LoginPage handleLogin={setisLoggedIn}/>} />
       {/* {contacts.length>0 && <Route path="" element={ <AppContactsList data={contacts}/> }/>}   */}

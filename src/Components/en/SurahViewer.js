@@ -268,7 +268,7 @@ const normalizeText = (text) => {
 };
 
 
-const SurahViewer = () => {
+const SurahViewerEn = () => {
   const { surahNumber } = useParams();
   const [selectedSurah, setSelectedSurah] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -281,16 +281,19 @@ const SurahViewer = () => {
     const surah = getAllSurahWithAyat(surahNumber);
     //surahs[surahNumber];
     //.find(s => s.number.toString() === surahNumber);
-    if (surah.name) document.title = surah.name.ar ;
+    if (surah.name) document.title = surah.name.ar+ " - " + surah.name.en;
     setSelectedSurah(surah || null);
     setFilteredAyat(surah ? surah.verses : []);
   }, [surahNumber]);
 
   useEffect(() => {
     if (selectedSurah) {
+
       const filtered = selectedSurah.verses.filter(ayah =>
-        normalizeText(ayah.text.ar).includes(normalizeText(searchTerm))
-        || ayah.number.toString()==(searchTerm)
+        
+         ayah.text.en.toLowerCase().includes(searchTerm.toLowerCase())
+        || (ayah.number.toString()==(searchTerm.trim()))
+        ||normalizeText(ayah.text.ar).includes(normalizeText(searchTerm))
       );
       setFilteredAyat(filtered);
     }
@@ -325,15 +328,24 @@ body {
 }
 `}</style>
     <div className="container mt-5">
-      <h1 className="mb-4">عرض آيات السورة</h1>
+      <h1 className="mb-4">عرض آيات السورة
+        -
+        Surah Verses Viewer
+      </h1>
       {selectedSurah ? (
     
         <div>
           
           {/* Font Size Controls */}
           <div className="my-4 my-4 d-flex gap-3">
-            <button id="increase-font" className="btn btn-primary me-2">تكبير الخط</button>
-            <button id="decrease-font" className="btn btn-secondary">تصغير الخط</button>
+            <button id="increase-font" className="btn btn-primary me-2"
+            >
+              Increase font size
+            </button>
+            <button id="decrease-font" className="btn btn-secondary"
+            >
+              Decrease font size
+            </button>
           </div>
 
           <div className="list-group">
@@ -346,7 +358,9 @@ body {
           <input
             type="text"
             className="form-control my-4"
-            placeholder="ابحث في الآيات..."
+            placeholder="ابحث في الآيات...
+            search in verses...
+            "
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -356,18 +370,31 @@ body {
                 selectedAyahIndex === index ? 'highlighted' : ''
               }`}>
                {/* Ayah Text and Number Inline */}
+               
+               " 
             <span className="ayah-text">{ayah.text.ar}</span>
+          
+           "
+           &nbsp;
+           <br/>
+            <span className="ayah-text">{ayah.text.en}</span>
+          <br/>
             <span className="ayah-number">({ayah.number})</span>
+      
+            <hr/>
+            {/* <span className="ayah-number">({ayah.number})</span> */}
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <p>السورة غير موجودة.</p>
+        <p>السورة غير موجودة.
+          surah not found
+        </p>
       )}
     </div>
     </>
   );
 };
 
-export default SurahViewer;
+export default SurahViewerEn;
