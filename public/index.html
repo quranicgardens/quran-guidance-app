@@ -52,10 +52,137 @@
       .hero-section p {
         font-size: 1.25rem;
       }
+
+
+/* Custom background and text color classes */
+/* body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        } */
+
+        /* Links and buttons */
+        /* a.light-mode {
+            color: #1a73e8;
+        }
+
+        a.dark-mode {
+            color: #1e90ff;
+        }
+
+        button.light-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        button.dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        } */
+
+        /* Transition for smooth mode switch */
+        /* body {
+            transition: background-color 0.3s, color 0.3s;
+        } */
+
+
+            /* Invert colors for dark mode */
+            body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+            filter: invert(1) hue-rotate(180deg); /* Invert colors with a hue shift to fix images */
+        }
+
+        /* Links and buttons */
+        a.light-mode {
+            color: #1a73e8;
+        }
+
+        a.dark-mode {
+            color: #1e90ff;
+        }
+
+        button.light-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        button.dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        /* Transition for smooth mode switch */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Invert filter correction for images */
+        /* Fix images when in dark mode */
+        /* img.invert-correct {
+            filter: invert(1) hue-rotate(180deg); 
+            
+        } */
+
+        .dark-mode img , .dark-mode .hero-section {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+
+
+
+        /* Dark Mode Variables */
+/*         
+[data-bs-theme=dark],.dark-mode {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-black: #fff;
+    --bs-white: #000;
+    --bs-gray: #adb5bd;
+    --bs-gray-dark: #f8f9fa;
+    --bs-gray-100: #343a40;
+    --bs-gray-200: #495057;
+    --bs-gray-300: #6c757d;
+    --bs-gray-400: #adb5bd;
+    --bs-gray-500: #ced4da;
+    --bs-gray-600: #dee2e6;
+    --bs-gray-700: #e9ecef;
+    --bs-gray-800: #f8f9fa;
+    --bs-gray-900: #ffffff;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #343a40;
+    --bs-dark: #212529;
+    --bs-body-color: #f8f9fa;
+    --bs-body-bg: #212529;
+    --bs-emphasis-color: #fff;
+} */
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <button id="toggle-dark-mode" class="btn btn-secondary">Toggle Dark Mode</button>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -68,33 +195,138 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      setTimeout(() => {
-       
-     
-        // Your JS code here
-        const increaseButton = document.getElementById("increase-font");
-        const decreaseButton = document.getElementById("decrease-font");
+   
+  // Your JS code here
+  let currentFontSize = 1.2; // Default font size in rem
 
-        let currentFontSize = 1.2; // Default font size in rem
+  const updateFontSize = (amount) => {
+    const ayahTextElements = document.querySelectorAll(".ayah-text,.list-group");
+    currentFontSize += amount;
 
-        const updateFontSize = (amount) => {
-          const ayahTextElements = document.querySelectorAll(".ayah-text");
-          currentFontSize += amount;
+    // Prevent the font size from going below 1rem
+    if (currentFontSize < 1) {
+      currentFontSize = 1;
+    }
 
-          // Prevent the font size from going below 1rem
-          if (currentFontSize < 1) {
-            currentFontSize = 1;
-          }
+    ayahTextElements.forEach((element) => {
+      element.style.fontSize = `${currentFontSize}rem`;
+    });
+  };
 
-          ayahTextElements.forEach((element) => {
-            element.style.fontSize = `${currentFontSize}rem`;
-          });
-        };
+  // // Attach event delegation to body
+  // document.body.addEventListener("click", (event) => {
+  //   if (event.target.id === "increase-font") {
+  //     updateFontSize(0.1);
+  //   } else if (event.target.id === "decrease-font") {
+  //     updateFontSize(-0.1);
+  //   }
 
-        // Attach event listeners to buttons
-        increaseButton?.addEventListener("click", () => updateFontSize(0.1));
-        decreaseButton?.addEventListener("click", () => updateFontSize(-0.1));
-    }, 7*1000);
+  //   else if (event.target.id === "toggle-dark-mode") {
+  //         // Toggle the dark mode class
+  //         document.body.classList.toggle('bg-dark');
+  //         document.body.classList.toggle('text-light');
+          
+  //         // Toggle button text
+  //         const toggleButton = event.target;
+  //         if (document.body.classList.contains('bg-dark')) {
+  //           toggleButton.innerText = 'Switch to Light Mode';
+  //         } else {
+  //           toggleButton.innerText = 'Switch to Dark Mode';
+  //         }
+  //       }
+    
+  // });
+/// Handle dark mode toggle and font size adjustment
+ // Handle dark mode toggle and font size adjustment
+//  document.body.addEventListener("click", (event) => {
+//         if (event.target.id === "toggle-dark-mode") {
+//             // Toggle dark mode class on the body
+//             if (document.body.classList.contains('dark-mode')) {
+//                 document.body.classList.remove('dark-mode');
+//                 document.body.classList.add('light-mode');
+
+//                 // Update button text
+//                 event.target.innerText = 'Switch to Dark Mode';
+//             } else {
+//                 document.body.classList.remove('light-mode');
+//                 document.body.classList.add('dark-mode');
+
+//                 // Update button text
+//                 event.target.innerText = 'Switch to Light Mode';
+//             }
+//         }
+
+//         if (event.target.id === "increase-font") {
+//             updateFontSize(0.1);
+//         } else if (event.target.id === "decrease-font") {
+//             updateFontSize(-0.1);
+//         }
+//     });
+
+document.body.addEventListener("click", (event) => {
+        if (event.target.id === "toggle-dark-mode") {
+            // // Toggle dark mode class on the body
+            // if (document.body.classList.contains('dark-mode')) {
+            //     document.body.classList.remove('dark-mode');
+            //     document.body.classList.add('light-mode');
+
+            //     // Update button text
+            //     event.target.innerText = 'Switch to Dark Mode';
+            // } else {
+            //     document.body.classList.remove('light-mode');
+            //     document.body.classList.add('dark-mode');
+
+            //     // Update button text
+            //     event.target.innerText = 'Switch to Light Mode';
+            // }
+            const body = document.body;
+        const isDarkMode = body.getAttribute("data-bs-theme") === "dark";
+
+        // Toggle the dark mode theme
+        if (isDarkMode) {
+            // Switch to light mode
+
+
+
+            body.setAttribute("data-bs-theme", "light");
+            document.getElementById("toggle-dark-mode").innerText = "Switch to Dark Mode";
+            
+         // replaceClasses('dark', 'light'); // Replace dark classes with light
+          document.body.classList.remove('dark-mode');
+          document.body.classList.add('light-mode');
+        } else {
+
+    
+
+            // Switch to dark mode
+            //replaceClasses('light', 'dark'); // Replace light classes with dark
+            replaceClasses('dark', 'light');
+            body.setAttribute("data-bs-theme", "dark");
+            document.getElementById("toggle-dark-mode").innerText = "Switch to Light Mode";
+
+           document.body.classList.remove('light-mode');
+           document.body.classList.add('dark-mode');
+        }
+        }
+
+        if (event.target.id === "increase-font") {
+            updateFontSize(0.1);
+        } else if (event.target.id === "decrease-font") {
+            updateFontSize(-0.1);
+        }
+    });
+    // Function to replace light classes with dark classes
+    function replaceClasses(oldSuffix, newSuffix) {
+        const elements = document.querySelectorAll(`[class*='-${oldSuffix}']`);
+        elements.forEach((element) => {
+            element.classList.forEach((className) => {
+                if (className.endsWith(`-${oldSuffix}`)) {
+                    const newClass = className.replace(`-${oldSuffix}`, `-${newSuffix}`);
+                    element.classList.replace(className, newClass);
+                }
+            });
+        });
+    }
     </script>
   </body>
 </html>

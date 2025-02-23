@@ -22,6 +22,7 @@ import * as Constants from './Helper/Constants';
 import itemLinks from './Data/AppItemLinks';
 import EntireQuranSearch from './Components/ar/EntireQuranSearch';
 import QuranSearch from './Components/ar/QuranSearch';
+import AyahRecitation from './Components/AyahRecitation';
 function App() {
   window.Constants = Constants
   document.title = Constants.AppName;
@@ -62,6 +63,7 @@ function App() {
             <Route path="/surahs" element={<SurahList />} />
             <Route path="/en/surahs" element={<SurahListEn />} />
             <Route path="/QuranSearch" element={<QuranSearch />} />
+            <Route path="/AyahRecitation" element={<AyahRecitation />} />
 
             <Route path="/EntireQuranSearch" element={<EntireQuranSearch />} />
             <Route path="surahs/:surahNumber" element={<SurahViewer />} />

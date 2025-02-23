@@ -748,8 +748,12 @@
 
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getAllSurahsWithAyat } from "../../Helper/Utils";
-
+import { getAllSurahsWithAyat, getAyahAudioUrl } from "../../Helper/Utils";
+import AudioPlayer from "../AudioPlayer";
+import AyahRecitation from "../AyahRecitation";
+import  normalizeArabic  from "../../Helper/arabic-normalizer";
+import FontResizer from "../FontResizer";
+import { getAyahAudioUrlSource3 ,getAyahAudioUrlSource1} from "../../Helper/Utils";
 const surahs = getAllSurahsWithAyat();
 
 const QuranSearch = () => {
@@ -806,6 +810,8 @@ const QuranSearch = () => {
   return (
     <div className="container mt-4">
       <h1 className="text-center">Quran Verse Search</h1>
+       {/* Font Size Controls */}
+       <FontResizer/>
       <div className="row mb-3">
         <div className="col-md-8 mx-auto">
           <div className="input-group">
@@ -858,6 +864,8 @@ const QuranSearch = () => {
                     <strong>{result.surahNameEn} ({result.surahNameAr})</strong> (Verse {result.verseNumber}): <br />
                     <span><strong>Arabic:</strong> {result.verseTextAr}</span><br />
                     <span><strong>English:</strong> {result.verseTextEn}</span>
+                    <AudioPlayer url={getAyahAudioUrl(result.surahNumber, result.verseNumber)}/>
+<AyahRecitation ayahText={result.verseTextAr} audioUrl={getAyahAudioUrlSource1(result.surahNumber, result.verseNumber)}/>
                   </li>
                 ))}
               </ul>

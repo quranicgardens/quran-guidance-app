@@ -19,7 +19,55 @@ export const removeTashkeel = (text) => {
   return text.replace(/[\u0617-\u061A\u064B-\u0652]/g, '');
 };
 // export { getTypeInArabic, removeTashkeel };
+function convertTo3DigitString(num) {
+  // Convert the number to a string
+  const numStr = num.toString();
 
+  // Pad the number only if it has less than 3 digits
+  return numStr.length < 3 ? numStr.padStart(3, '0') : numStr;
+}
+
+
+
+
+export const getSurahAudioUrl = (surahNumber) => {
+
+const formattedNumber = convertTo3DigitString(surahNumber);
+//console.log(formattedNumber); // Output: "015"
+return `https://server13.mp3quran.net/husr/Almusshaf-Al-Mojawwad/${formattedNumber}.mp3`;
+
+}
+export const getAyahAudioUrlSource1 = (surahNumber,ayahNumber) => {
+  //العفاسى
+  const formattedNumber =`${surahNumber}_${ayahNumber}`;
+  // convertTo3DigitString(surahNumber);
+  //console.log(formattedNumber); // Output: "015"
+  return `https://quranaudio.pages.dev/1/${formattedNumber}.mp3`;
+  
+  
+  }
+  export const getAyahAudioUrlSource2 = (surahNumber,ayahNumber) => {
+  // الحصرى مجود
+    const formattedNumber =convertTo3DigitString(surahNumber)+convertTo3DigitString(ayahNumber);
+    // convertTo3DigitString(surahNumber);
+    //console.log(formattedNumber); // Output: "015"
+    return `https://everyayah.com/data/Husary_128kbps_Mujawwad/${formattedNumber}.mp3`;
+    
+    
+    }
+    export const getAyahAudioUrlSource3 = (surahNumber,ayahNumber) => {
+      // الحصرى م
+        const formattedNumber =convertTo3DigitString(surahNumber)+convertTo3DigitString(ayahNumber);
+        // convertTo3DigitString(surahNumber);
+        //console.log(formattedNumber); // Output: "015"
+        return `https://everyayah.com/data/Husary_64kbps/${formattedNumber}.mp3`;
+        
+        
+        }
+export const getAyahAudioUrl = (surahNumber,ayahNumber) => {
+  return getAyahAudioUrlSource2(surahNumber,ayahNumber);
+  
+  }
 export const getSurahDetails = (surahNumber) => {
   return SurahsDetails[surahNumber - 1];
 }

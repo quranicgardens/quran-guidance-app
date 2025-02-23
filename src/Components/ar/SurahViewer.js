@@ -253,7 +253,9 @@ import { useParams } from 'react-router-dom';
 import  normalizeArabic  from '../../Helper/arabic-normalizer';
 //import surahs from '../../Data/ar/surah-ayahs';
 import { getAllSurahWithAyat, getSurahDetails, getSurahWithAyat, getTypeInArabic } from '../../Helper/Utils';
-
+import FontResizer from '../FontResizer';
+import AudioPlayer from '../AudioPlayer';
+import { getSurahAudioUrl } from '../../Helper/Utils';
 const normalizeText = (text) => {
   return normalizeArabic(text)
     .normalize("NFD") // Normalize to NFD (Canonical Decomposition)
@@ -331,18 +333,17 @@ body {
         <div>
           
           {/* Font Size Controls */}
-          <div className="my-4 my-4 d-flex gap-3">
-            <button id="increase-font" className="btn btn-primary me-2">تكبير الخط</button>
-            <button id="decrease-font" className="btn btn-secondary">تصغير الخط</button>
-          </div>
+          <FontResizer/>
 
           <div className="list-group">
             <div className="list-group-item">
               <h5 className="mb-1">سورة {surahNumber}: {getSurahDetails(surahNumber).name}</h5>
               <p className="mb-1">نوع السورة: { getTypeInArabic(getSurahDetails(surahNumber).type)}</p>
               <p className="mb-1">عدد الآيات: {getSurahDetails(surahNumber).total_verses}</p>
+              <AudioPlayer url={getSurahAudioUrl(surahNumber)}/>
             </div>
           </div>
+         
           <input
             type="text"
             className="form-control my-4"
