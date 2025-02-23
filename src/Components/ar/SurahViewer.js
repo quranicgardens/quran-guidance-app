@@ -252,7 +252,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import  normalizeArabic  from '../../Helper/arabic-normalizer';
 //import surahs from '../../Data/ar/surah-ayahs';
-import { getAllSurahWithAyat, getSurahDetails, getTypeInArabic } from '../../Helper/Utils';
+import { getAllSurahWithAyat, getSurahDetails, getSurahWithAyat, getTypeInArabic } from '../../Helper/Utils';
 
 const normalizeText = (text) => {
   return normalizeArabic(text)
@@ -278,7 +278,7 @@ const SurahViewer = () => {
     setSelectedAyahIndex(index); // Set the clicked Ayah as selected
   };
   useEffect(() => {
-    const surah = getAllSurahWithAyat(surahNumber);
+    const surah = getSurahWithAyat(surahNumber);
     //surahs[surahNumber];
     //.find(s => s.number.toString() === surahNumber);
     if (surah.name) document.title = surah.name.ar ;

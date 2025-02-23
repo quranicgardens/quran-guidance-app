@@ -49,7 +49,7 @@ function AppFooter(){
         </div>
     
         <div class="d-flex flex-column flex-row justify-content-between py-4 my-4 border-top">
-          <p>© 2022 Company, Inc. All rights reserved.</p>
+          <p>© { new Date().getFullYear()} {window.Constants.AppName}. All rights reserved.</p>
        
         </div>
       </footer>
