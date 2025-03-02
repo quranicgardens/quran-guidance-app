@@ -23,8 +23,17 @@ import itemLinks from './Data/AppItemLinks';
 import EntireQuranSearch from './Components/ar/EntireQuranSearch';
 import QuranSearch from './Components/ar/QuranSearch';
 import AyahRecitation from './Components/AyahRecitation';
+import en from './Langs/en';
+import ar from './Langs/ar';
+import { setSiteLang } from './Helper/Utils';
 function App() {
   window.Constants = Constants
+let resources={}
+  resources.ar = ar
+  resources.en = en
+  window.resources = resources
+  localStorage.setItem("resources", JSON.stringify(resources))
+  //setSiteLang("en")
   document.title = Constants.AppName;
   // const UserContext = createContext();
   // const [user, setUser] = useState("Jesse Hall");

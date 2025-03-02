@@ -103,7 +103,7 @@
 //   const [audioContext, setAudioContext] = useState(null);
 //   const [silenceTimes, setSilenceTimes] = useState([]);
 //   const [currentWordIndex, setCurrentWordIndex] = useState(null);
-  
+
 //   // The Ayah (verse) text to be recited
 //   //const ayahText = "In the name of Allah, the Most Gracious, the Most Merciful";
 //   const ayahText = "الحمد لله رب العالمين";
@@ -123,7 +123,7 @@
 //     // Ensure to set up the source node and analyser node only once
 //     const audioSource = context.createMediaElementSource(audio);
 //     const analyser = context.createAnalyser();
-    
+
 //     // Connect the source to the analyser and the analyser to the context destination
 //     audioSource.connect(analyser);
 //     analyser.connect(context.destination);
@@ -178,7 +178,7 @@
 //       for (let i = 0; i < words.length; i++) {
 //         const wordLength = words[i].length;
 //         const wordDuration = (wordLength / totalLength) * totalDuration;
-        
+
 //         // Adjust time by excluding silence times
 //         const adjustedWordDuration = wordDuration - silenceTimes.reduce((acc, time) => acc + time, 0);
 //         elapsedTime += adjustedWordDuration;
@@ -695,7 +695,7 @@
 //             Pause
 //           </button>
 //         </div>
-        
+
 //         {/* Progress Bar */}
 //         <div className="mt-3">
 //           <input
@@ -839,7 +839,7 @@
 //             Pause
 //           </button>
 //         </div>
-        
+
 //         {/* Progress Bar with time */}
 //         <div className="mt-3">
 //           <input
@@ -985,7 +985,7 @@
 //             Pause
 //           </button>
 //         </div>
-        
+
 //         {/* Progress Bar with time */}
 //         <div className="mt-3">
 //           <input
@@ -1133,7 +1133,7 @@
 //             Pause
 //           </button>
 //         </div>
-        
+
 //         {/* Progress Bar with time */}
 //         <div className="mt-3">
 //           {/* Container for custom progress bar */}
@@ -1304,7 +1304,7 @@
 //             Pause
 //           </button>
 //         </div>
-        
+
 //         {/* Progress Bar with time */}
 //         <div className="mt-3" style={{ position: "relative", width: "100%" }}>
 //           {/* Container for custom progress bar */}
@@ -1501,6 +1501,18 @@ const AyahRecitation = ({ ayahText, audioUrl }) => {
         {words.map((word, index) => (
           <span
             key={index}
+            className={`${currentWordIndex === index ? "fw-bold text-danger" : "fw-bold text-success"
+              }`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </p>
+
+      {/* <p>
+        {words.map((word, index) => (
+          <span
+            key={index}
             style={{
               fontWeight: currentWordIndex === index ? "bold" : "normal",
               color: currentWordIndex === index ? "red" : "black",
@@ -1509,7 +1521,7 @@ const AyahRecitation = ({ ayahText, audioUrl }) => {
             {word}{" "}
           </span>
         ))}
-      </p>
+      </p> */}
 
       <div>
         <audio ref={audioRef} />
@@ -1521,7 +1533,7 @@ const AyahRecitation = ({ ayahText, audioUrl }) => {
             {isPlaying ? "Pause" : "Resume"} {/* Change button text based on the state */}
           </button>
         </div>
-        
+
         {/* Progress Bar with time */}
         <div className="mt-3" style={{ position: "relative", width: "100%" }}>
           {/* Container for custom progress bar */}
@@ -1544,7 +1556,7 @@ const AyahRecitation = ({ ayahText, audioUrl }) => {
                 height: "100%",
                 backgroundColor: "#4caf50", // Color of played portion
                 borderRadius: "5px 0 0 5px",
-                zIndex:3
+                zIndex: 3
               }}
             />
             <input

@@ -1,4 +1,5 @@
 // import { useState,createContext, useContext } from "react";
+import { getLangResource } from "../Helper/Utils";
 import ItemLink from "./ItemLink";
 
 
@@ -12,7 +13,7 @@ return (
         <div class="container">
             <h1>Welcome to the Holy Quran</h1>
             <p class="lead">Discover the wisdom, guidance, and beauty of the Quran.</p>
-            <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="#about" class="btn btn-primary btn-lg">{getLangResource("learnMore")}</a>
         </div>
     </section>
     <section id="about" class="py-5">
