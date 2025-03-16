@@ -2,7 +2,14 @@ export const title = "الشاطبية";
 export const description = "متن حرز الأمانى ووجه التهانى فى القرءات العشر الصغرى";
 export const author = "  القاسم بن فِيْرُّو الشَّاطبي الأندلُسي";
 export const preface = "";
-export const resources = {};
+export const resources = [
+
+    {
+        "Title": "شرح الشاطبية للشيخ عبدالرشيد صوفى"
+        , "Link": "https://archive.org/details/Shatebiah-Sofi"
+    },
+    { "Title": " شرح الشاطبية للشيخ عدنان بن عبدالرحمن العرضي", "Link": "https://midad.com/lesson/291364/%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%A1%D8%A7%D8%AA" }
+];
 export const audios = [
     {
         "alternateLink": null,

@@ -8,13 +8,14 @@ import { getMatnObject } from "../../../Helper/Utils";
 //import { MotoonChaptersTemplate } from "../../../Helper/Templates";
 
 import { useState, useEffect } from "react";
+import FontResizer from "../../FontResizer";
 
 
 const BaytsByChapter = () => {
   const { chapterId } = useParams(); // Get the chapterId from the URL
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredBayts, setFilteredBayts] = useState([]);
- const cuurentMatn = getMatnObject();
+  const cuurentMatn = getMatnObject();
   const bayts = cuurentMatn.bayts
 
   // Filter bayts based on chapterId and searchQuery
@@ -30,31 +31,40 @@ const BaytsByChapter = () => {
 
 
   return (
-    <div className="container mt-3">
-      <h3>{cuurentMatn.chapters.filter(x=>x.Id==chapterId)[0]?.title}</h3>
+    <>
+      <style>{`
+body {
+  direction: rtl;
+  text-align: right;
+}
+`}</style>
 
-      {/* Search input */}
-      <input
-        type="text"
-        className="form-control mb-3"
-        placeholder="البحث داخل الأبيات..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <div className="container mt-3">
+        <h3>{cuurentMatn.title+ " - "+"باب "+ cuurentMatn.chapters.filter(x => x.Id == chapterId)[0]?.title}</h3>
+        <FontResizer />
+        {/* Search input */}
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="البحث داخل الأبيات..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
 
-      {/* Display the filtered bayts */}
-      {filteredBayts.length === 0 ? (
-        <p>No bayts match your search.</p>
-      ) : (
-        <ul className="list-group">
-          {filteredBayts.map((bayt) => (
-            <li key={bayt.Id} className="list-group-item">
-              <p>{bayt.bayt}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+        {/* Display the filtered bayts */}
+        {filteredBayts.length === 0 ? (
+          <p>No bayts match your search.</p>
+        ) : (
+          <ul className="list-group px-0">
+            {filteredBayts.map((bayt) => (
+              <li key={bayt.Id} className="list-group-item">
+                <p>{bayt.bayt}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
   );
 };
 

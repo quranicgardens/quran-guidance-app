@@ -6,7 +6,7 @@ import { MotoonChaptersTemplate } from "../../../Helper/Templates";
 const ChapterList = () => {
   const cuurentMatn = getMatnObject();
   const chapters = cuurentMatn.chapters
-  return MotoonChaptersTemplate(chapters);
+  return MotoonChaptersTemplate(chapters, cuurentMatn.title);
 };
 
 export default ChapterList;

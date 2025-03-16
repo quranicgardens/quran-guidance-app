@@ -11,21 +11,21 @@ return (
   <div className="container my-5">
         <section class="hero-section text-center">
         <div class="container">
-            <h1>Welcome to the Holy Quran</h1>
-            <p class="lead">Discover the wisdom, guidance, and beauty of the Quran.</p>
+            <h1>Welcome to the Quranic Gardens </h1>
+            <p class="lead">Discover the wisdom, guidance,sciences and beauty of the Quran.</p>
             <a href="#about" class="btn btn-primary btn-lg">{getLangResource("learnMore")}</a>
         </div>
     </section>
     <section id="about" class="py-5">
         <div class="container text-center">
-            <h2>About the Quran</h2>
-            <p class="lead">The Quran is the central religious text of Islam, believed to be a revelation from God. It is widely regarded as the finest work in classical Arabic literature.</p>
-            <p>Explore its chapters, teachings, and how it has guided millions across the globe for centuries.</p>
+            <h2>About the glorious Quran</h2>
+            <p class="lead">The Quran is the miraculous scripture of Allah, revealed to the Prophet Muhammad (peace and blessings be upon him), the final revelation of God's holy books. It is the finest book ever.</p>
+            <p>Explore its chapters, teachings, and how it has guided billions across the globe for centuries.</p>
         </div>
     </section>
     <section class="bg-light py-5">
         <div class="container text-center">
-            <h2>Features of Our Quran Platform</h2>
+            <h2>Features of Our Quranic Gardens Platform</h2>
             <div class="row">
                 <div class="col-md-4">
                     <h4>Quran Translation</h4>

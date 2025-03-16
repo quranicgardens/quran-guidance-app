@@ -26,6 +26,7 @@ import AyahRecitation from './Components/AyahRecitation';
 import en from './Langs/en';
 import ar from './Langs/ar';
 import { setSiteLang } from './Helper/Utils';
+import ResourceList from './Components/Motoon/Qiraat/ResourceList';
 function App() {
   window.Constants = Constants
 let resources={}
@@ -82,6 +83,7 @@ let resources={}
             <Route path={Constants.QuranEnglishRoute} element={<QuranViewerEn />} />
             {/* shatibyah */}
             <Route path={Constants.shatibyahRoute} element={<Main />} />
+            <Route path={Constants.shatibyahRoute+"/resources"} element={<ResourceList />} />
             <Route path={Constants.shatibyahRoute + "/chapters"} element={<ChapterList />} />
             <Route path={Constants.shatibyahRoute + "/allbayts"} element={<AllBaytsSearch />} />
             <Route path={Constants.shatibyahRoute + "/chapters/:chapterId"} element={<BaytsByChapter />} />

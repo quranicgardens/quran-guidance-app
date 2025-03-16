@@ -13,7 +13,7 @@ const Main = () => {
                     {cuurentMatn.title}
                 </h1>
                 {/* Links using Bootstrap button styles */}
-                <div className="d-flex flex-column gap-3">
+                <div className="d-flex flex-column gap-3 mt-5">
                     <Link to={cuurentMatn.route+"/chapters"} className="btn btn-primary mr-2">
                         View Chapters
                     </Link>
