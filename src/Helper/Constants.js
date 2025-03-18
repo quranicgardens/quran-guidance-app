@@ -4,3 +4,4 @@ export const shatibyahRoute=motoonRoute+"/shatibyah";
 export const dorrahRoute=motoonRoute+"/dorrah";
 export const tybahRoute=motoonRoute+"/tybah";
 export const QuranEnglishRoute="/en/quranviewer/pdf";
+export const BaseUrl="/quran-guidance-app";

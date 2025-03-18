@@ -79,7 +79,7 @@ export const getAllSurahsWithAyat = () => {
 }
 export const getMatnObject = () => {
   let matn = {}
-  let currentPath = window.location.pathname;
+  let currentPath = window.location.pathname+window.location.hash;
 
   if (currentPath.includes(window.Constants.shatibyahRoute)) {
     matn = shatibyah

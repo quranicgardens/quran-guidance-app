@@ -24,7 +24,7 @@ function ItemLink(props) {
         `}</style>
         <div className="col-3">
             <div class="card">
-                <img class="img-thumbnail" src="/Quran-item.jpg"
+                <img class="img-thumbnail" src="Quran-item.jpg"
                 // style={{width:"350px"}} 
                 />
                 <div class="card-body text-center">

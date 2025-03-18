@@ -13,7 +13,7 @@ return (
         <div class="container">
             <h1>Welcome to the Quranic Gardens </h1>
             <p class="lead">Discover the wisdom, guidance,sciences and beauty of the Quran.</p>
-            <a href="#about" class="btn btn-primary btn-lg">{getLangResource("learnMore")}</a>
+            <a href="#about" class="d-none btn btn-primary btn-lg">{getLangResource("learnMore")}</a>
         </div>
     </section>
     <section id="about" class="py-5">
