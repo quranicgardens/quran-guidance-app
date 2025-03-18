@@ -22,7 +22,7 @@ function ItemLink(props) {
                 flex-direction: column;
             }
         `}</style>
-        <div className="col-3">
+        <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card">
                 <img class="img-thumbnail" src="Quran-item.jpg"
                 // style={{width:"350px"}} 
