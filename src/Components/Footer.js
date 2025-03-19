@@ -1,7 +1,7 @@
 function AppFooter(){
     return (
 <footer class="p-5">
-        <div class="row">
+        {/* <div class="row">
           <div class="col-6 col-md-2 mb-3">
             <h5>Section</h5>
             <ul class="nav flex-column">
@@ -46,7 +46,7 @@ function AppFooter(){
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
     
         <div class="d-flex flex-column flex-row justify-content-between py-4 my-4 border-top">
           <p>© { new Date().getFullYear()} {window.Constants.AppName}. All rights reserved.</p>

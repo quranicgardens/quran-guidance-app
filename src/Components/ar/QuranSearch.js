@@ -753,6 +753,8 @@ import AudioPlayer from "../AudioPlayer";
 import AyahRecitation from "../AyahRecitation";
 import  normalizeArabic  from "../../Helper/arabic-normalizer";
 import FontResizer from "../FontResizer";
+import { normalizeText } from "../../Helper/arabic-normalizer";
+import { useNavigate } from "react-router-dom";
 import { getAyahAudioUrlSource3 ,getAyahAudioUrlSource1} from "../../Helper/Utils";
 const surahs = getAllSurahsWithAyat();
 
@@ -761,7 +763,7 @@ const QuranSearch = () => {
   const [results, setResults] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null); // Track selected result index
   const [loading, setLoading] = useState(false); // Track loading state
-
+const navigate = useNavigate();
   const handleSearch = () => {
     setLoading(true); // Set loading to true when search begins
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
@@ -769,10 +771,36 @@ const QuranSearch = () => {
 
     surahs.forEach((surah) => {
       surah.verses.forEach((verse) => {
-        const englishMatch = verse.text.en.toLowerCase().includes(lowerCaseSearchTerm);
-        const arabicMatch = verse.text.ar.toLowerCase().includes(lowerCaseSearchTerm);
-
-        if (englishMatch || arabicMatch) {
+        // const englishMatch = verse.text.en.toLowerCase().includes(lowerCaseSearchTerm);
+        // const arabicMatch = verse.text.ar.toLowerCase().includes(lowerCaseSearchTerm);
+        const lowerCaseSearchTerm = searchTerm.trim().toLowerCase(); // Normalize the search term
+        const lowerCaseEnglishText = verse.text.en.toLowerCase(); // Convert the English text to lowercase
+  
+        // Check if searchTerm is a number
+        const isNumberSearch = !isNaN(searchTerm.trim()) && searchTerm.trim() !== "";
+  
+        // Check if searchTerm contains English characters (non-Arabic characters)
+        const isEnglishSearch = /[a-zA-Z]/.test(searchTerm);
+  
+        // Debugging output
+        console.log(`Searching for: "${lowerCaseSearchTerm}"`);
+        console.log(`Ayah English text: "${lowerCaseEnglishText}"`);
+        console.log(`Is English Search: ${isEnglishSearch}`);
+        console.log(`Is Number Search: ${isNumberSearch}`);
+  
+        // Matches based on the search term's nature (English, Number, or Arabic)
+        const matchesEnglish = isEnglishSearch && lowerCaseEnglishText.includes(lowerCaseSearchTerm);
+        const matchesNumber = isNumberSearch && verse.number.toString() === searchTerm.trim();
+        const matchesArabic = !isNumberSearch && !isEnglishSearch && normalizeText(verse.text.ar).includes(normalizeText(lowerCaseSearchTerm));
+  
+        // Log the individual match results for debugging
+        console.log(`Matches English: ${matchesEnglish}`);
+        console.log(`Matches Number: ${matchesNumber}`);
+        console.log(`Matches Arabic: ${matchesArabic}`);
+  
+        // if (englishMatch || arabicMatch) 
+        if (matchesEnglish || matchesNumber || matchesArabic)          
+          {
           filteredResults.push({
             surahNumber: surah.number, // Store surah number for the link
             surahNameAr: surah.name.ar,
@@ -804,7 +832,9 @@ const QuranSearch = () => {
   // Navigate to the specific verse page on double-click
   const handleDoubleClick = (surahNumber, verseNumber) => {
     const url = `/en/surahs/${surahNumber}/${verseNumber}`;
-    window.location.href = url; // Navigate to the URL
+   // window.location.href = url; 
+   navigate(url); // Navigate to the URL
+   // // Navigate to the URL
   };
 
   return (

@@ -33,7 +33,8 @@ const EntireQuranSearch = () => {
     const surah =getSurahWithAyat(surahNumber);
     //surahs[surahNumber];
     //.find(s => s.number.toString() === surahNumber);
-    if (surah.name) document.title = surah.name.ar ;
+    if (surah?.name)
+       {document.title = surah.name.ar ;}
     setSelectedSurah(surah || null);
     setFilteredAyat(surah ? surah.verses : []);
   }, [surahNumber]);

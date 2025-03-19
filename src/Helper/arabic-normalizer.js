@@ -55,5 +55,17 @@ function normalizeArabic(text) {
 
     return normalizedText
 }
-
+export const normalizeText = (text) => {
+    return normalizeArabic(text)
+      .normalize("NFD") // Normalize to NFD (Canonical Decomposition)
+      .replace(/[\u0617-\u061A\u064B-\u0652]/g, '') // Remove Tashkeel (diacritics)
+      .replace(/[\u0640-\u064A]/g, (char) => {
+        // Replace Arabic letters to unify different forms of the same letter
+        const map = {
+          '\u0640': '', '\u0641': 'ف', '\u0642': 'ق', '\u0643': 'ك', '\u0644': 'ل', '\u0645': 'م', '\u0646': 'ن', '\u0647': 'ه', '\u0648': 'و', '\u0649': 'ى', '\u064A': 'ي'
+        };
+        return map[char] || char;
+      });
+  };
+  
 export default normalizeArabic
