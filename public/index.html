@@ -308,7 +308,12 @@ body[data-bs-theme="dark"] .text-muted {
     //     });
 
     document.body.addEventListener("click", (event) => {
-      if (event.target.id === "toggle-dark-mode") {
+      if (
+        //classic event delegation issue! Your code is checking if the clicked element's ID is "toggle-dark-mode", but when you click the <i> icon inside the button, the event target is actually the <i> element—not the <button>, so event.target.id is empty.
+      event.target.closest("#toggle-dark-mode")
+      //event.target.id === "toggle-dark-mode"
+    
+    ) {
 
         const body = document.body;
         const isDarkMode = body.getAttribute("data-bs-theme") === "dark";
