@@ -93,7 +93,16 @@ export const getMatnObject = () => {
   }
   return matn;
 }
+export function getLinkTitle(link) {
+  let isAr = false;
 
+   let title = isAr ? link.titleAr : link.title;
+   if (title?.trim().length == 0) {
+       title = isAr ? "عرض التفاصيل" : "View Details";
+   }
+   return title;
+
+}
 // export const getMatnBaytas = () => {
 //   let currentPath = window.location.pathname;
 //   let bayts= []

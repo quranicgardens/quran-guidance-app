@@ -848,7 +848,7 @@ const navigate = useNavigate();
             <input
               type="text"
               className="form-control"
-              placeholder="Search for a word..."
+              placeholder="Search for a word arabic or english..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={handleKeyPress} // Add event listener for Enter key press

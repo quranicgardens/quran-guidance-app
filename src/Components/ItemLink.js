@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
-function getLinkTitle(link) {
-   let isAr = false;
+import { getLinkTitle } from "../Helper/Utils";
 
-    let title = isAr ? link.titleAr : link.title;
-    if (title?.trim().length == 0) {
-        title = isAr ? "عرض التفاصيل" : "View Details";
-    }
-    return title;
-
-}
 
 function ItemLink(props) {
     return (
