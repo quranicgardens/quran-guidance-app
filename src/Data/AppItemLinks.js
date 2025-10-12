@@ -4,8 +4,8 @@ const itemLinks = [
 
     {
         "id": 1,
-        "title": "Quran",
-        "titleAr": "القرآن",
+        "title": "Quran Audio",
+        "titleAr": "القرآن مع التلاوة الصوتية",
         "children": [{title:"" ,titleAr:"",path:"/surahs"}],
         "isHomeList": true,
         "isMenu": false

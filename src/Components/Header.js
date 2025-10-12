@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import itemLinks from '../Data/AppItemLinks';
-import { handleLanguageChange, getSiteLang ,getLinkTitle} from "../Helper/Utils";
+import { handleLanguageChange, getSiteLang ,getLinkTitle,getMenuLinkTitle, isRTL} from "../Helper/Utils";
 let language=getSiteLang()
 function AppHeader() {
   return (
@@ -53,12 +53,13 @@ function AppHeader() {
             {/* <li className="nav-item">
               <a href="#" className="nav-link active" aria-current="page">Home</a>
             </li> */}
-
+<li className="nav-item"><a className="nav-link" href="/">{isRTL()?"الرئيسية":"Home"}</a></li>
             {/* Dynamically generated links */}
             {Array.from(itemLinks).map((item, index) => (
               <li className="nav-item" key={index}>
-                <Link to={item.path} className="nav-link">
-                  {getLinkTitle(item)}
+                <Link to={item.children[0]?.path} className="nav-link">
+                  {getMenuLinkTitle(item)}
+                  
                 </Link>
               </li>
             ))}
