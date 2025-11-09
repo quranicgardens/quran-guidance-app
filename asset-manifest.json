@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/quran-guidance-app/static/css/main.073c9b0a.css",
-    "main.js": "/quran-guidance-app/static/js/main.86d42727.js",
+    "main.js": "/quran-guidance-app/static/js/main.b77881ff.js",
     "static/js/170.5e91d1fa.chunk.js": "/quran-guidance-app/static/js/170.5e91d1fa.chunk.js",
     "static/js/303.885a7bc2.chunk.js": "/quran-guidance-app/static/js/303.885a7bc2.chunk.js",
     "static/js/95.72639fc0.chunk.js": "/quran-guidance-app/static/js/95.72639fc0.chunk.js",
     "static/js/30.81faa3af.chunk.js": "/quran-guidance-app/static/js/30.81faa3af.chunk.js",
-    "static/js/741.49355cda.chunk.js": "/quran-guidance-app/static/js/741.49355cda.chunk.js",
+    "static/js/741.f7bad3d8.chunk.js": "/quran-guidance-app/static/js/741.f7bad3d8.chunk.js",
     "static/js/513.1c711fdc.chunk.js": "/quran-guidance-app/static/js/513.1c711fdc.chunk.js",
     "static/js/941.e3d33fca.chunk.js": "/quran-guidance-app/static/js/941.e3d33fca.chunk.js",
     "static/js/247.1b9b5d4f.chunk.js": "/quran-guidance-app/static/js/247.1b9b5d4f.chunk.js",
@@ -25,12 +25,12 @@
     "static/js/210.2d9ba9d2.chunk.js": "/quran-guidance-app/static/js/210.2d9ba9d2.chunk.js",
     "index.html": "/quran-guidance-app/index.html",
     "main.073c9b0a.css.map": "/quran-guidance-app/static/css/main.073c9b0a.css.map",
-    "main.86d42727.js.map": "/quran-guidance-app/static/js/main.86d42727.js.map",
+    "main.b77881ff.js.map": "/quran-guidance-app/static/js/main.b77881ff.js.map",
     "170.5e91d1fa.chunk.js.map": "/quran-guidance-app/static/js/170.5e91d1fa.chunk.js.map",
     "303.885a7bc2.chunk.js.map": "/quran-guidance-app/static/js/303.885a7bc2.chunk.js.map",
     "95.72639fc0.chunk.js.map": "/quran-guidance-app/static/js/95.72639fc0.chunk.js.map",
     "30.81faa3af.chunk.js.map": "/quran-guidance-app/static/js/30.81faa3af.chunk.js.map",
-    "741.49355cda.chunk.js.map": "/quran-guidance-app/static/js/741.49355cda.chunk.js.map",
+    "741.f7bad3d8.chunk.js.map": "/quran-guidance-app/static/js/741.f7bad3d8.chunk.js.map",
     "513.1c711fdc.chunk.js.map": "/quran-guidance-app/static/js/513.1c711fdc.chunk.js.map",
     "941.e3d33fca.chunk.js.map": "/quran-guidance-app/static/js/941.e3d33fca.chunk.js.map",
     "247.1b9b5d4f.chunk.js.map": "/quran-guidance-app/static/js/247.1b9b5d4f.chunk.js.map",
@@ -49,6 +49,6 @@
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.86d42727.js"
+    "static/js/main.b77881ff.js"
   ]
 }
